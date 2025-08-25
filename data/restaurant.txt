@@ -1,0 +1,3 @@
+R001,Campus Pizza,pizza,pizza@email.com,Pizza@123
+R002,Green Bites,green,green@email.com,Green@456
+R003,Burger Hub,burger,burger@email.com,Burg@789

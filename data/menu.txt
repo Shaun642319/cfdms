@@ -1,0 +1,9 @@
+M001,R001,Pepperoni Pizza,12.00,10
+M002,R001,Margherita Pizza,10.00,8
+M003,R001,Cheese Garlic Bread,5.00,15
+M004,R002,Veggie Salad,8.00,20
+M005,R002,Avocado Wrap,9.50,12
+M006,R002,Green Smoothie,6.00,10
+M007,R003,Classic Burger,11.00,15
+M008,R003,Cheese Fries,4.50,20
+M009,R003,Chicken Nuggets,7.00,18

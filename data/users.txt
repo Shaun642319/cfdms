@@ -1,0 +1,12 @@
+shaun,Pass@123,Student
+emily,Emi@456,Student
+liam,Liam@789,Student
+sophia,Soph@321,Student
+david,Dave@999,Student
+pizza,Pizza@123,Restaurant
+green,Green@456,Restaurant
+burger,Burg@789,Restaurant
+jane,Drive@123,Delivery
+alex,Drive@456,Delivery
+maria,Drive@789,Delivery
+admin,Admin@123,Admin

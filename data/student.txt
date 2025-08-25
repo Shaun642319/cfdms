@@ -1,0 +1,5 @@
+S001,Shaun,Gabriel,shaun,shaun@email.com,Pass@123,50.00
+S002,Emily,Stone,emily,emily@email.com,Emi@456,100.00
+S003,Liam,Johnson,liam,liam@email.com,Liam@789,25.00
+S004,Sophia,Lee,sophia,sophia@email.com,Soph@321,75.00
+S005,David,Miller,david,david@email.com,Dave@999,40.00
