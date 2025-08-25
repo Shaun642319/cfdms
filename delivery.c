@@ -5,9 +5,7 @@
 
 #define ORDER_FILE "data/orders.txt"
 
-// ==========================================================
 // Delivery Menu
-// ==========================================================
 void deliveryMenu(Delivery *d) {
     int choice;
 
@@ -32,9 +30,7 @@ void deliveryMenu(Delivery *d) {
 }
 
 
-// ==========================================================
 // View Assigned Orders
-// ==========================================================
 void viewAssignedOrders(Delivery *d) {
     FILE *fp = fopen(ORDER_FILE, "r");
     if (!fp) {
@@ -66,12 +62,7 @@ void viewAssignedOrders(Delivery *d) {
     fclose(fp);
 }
 
-// ==========================================================
-// Update Delivery Status
-// ==========================================================
-// ==========================================================
-// Update Delivery Status (with menu-style selection)
-// ==========================================================
+// Update Delivery Status (
 void updateDeliveryStatus(Delivery *d) {
     FILE *fp = fopen(ORDER_FILE, "r");
     if (!fp) {
@@ -105,7 +96,6 @@ void updateDeliveryStatus(Delivery *d) {
         return;
     }
 
-    // Choose order by index
     int choice;
     printf("Enter order number to update: ");
     scanf("%d", &choice);
@@ -116,7 +106,6 @@ void updateDeliveryStatus(Delivery *d) {
     char targetOrder[20];
     strcpy(targetOrder, orderIds[choice - 1]);
 
-    // Rewrite file with updated status
     fp = fopen(ORDER_FILE, "r");
     FILE *temp = fopen("data/orders_temp.txt", "w");
     if (!fp || !temp) {
@@ -132,7 +121,6 @@ void updateDeliveryStatus(Delivery *d) {
         if (strcmp(orderId, targetOrder) == 0 && strcmp(deliveryId, d->id) == 0) {
             printf("\nCurrent Status: %s\n", status);
 
-            // Menu-style status selection
             int statusChoice;
             printf("Select new status:\n");
             printf("1. OutForDelivery\n");

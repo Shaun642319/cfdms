@@ -5,9 +5,7 @@
 
 #define MENU_FILE "data/menu.txt"
 
-// ==========================================================
 // Restaurant Main Menu
-// ==========================================================
 void restaurantMenu(Restaurant *r) {
     int choice;
 
@@ -39,9 +37,7 @@ void restaurantMenu(Restaurant *r) {
     }
 }
 
-// ==========================================================
 // View Menu Items
-// ==========================================================
 void viewMenuItems(Restaurant *r) {
     FILE *fp = fopen(MENU_FILE, "r");
     if (!fp) {
@@ -72,9 +68,7 @@ void viewMenuItems(Restaurant *r) {
     fclose(fp);
 }
 
-// ==========================================================
 // Add Menu Item
-// ==========================================================
 void addMenuItem(Restaurant *r) {
     FILE *fp = fopen(MENU_FILE, "a+");
     if (!fp) {
@@ -114,9 +108,6 @@ void addMenuItem(Restaurant *r) {
     printf("✅ Item '%s' added successfully!\n", itemName);
 }
 
-// ==========================================================
-// Placeholders (to be implemented later)
-// ==========================================================
 void updateMenuItem(Restaurant *r) {
     FILE *fp = fopen(MENU_FILE, "r");
     if (!fp) {
@@ -128,7 +119,6 @@ void updateMenuItem(Restaurant *r) {
     double price;
     int stock;
 
-    // Step 1: Show current items
     printf("\n--- Update Menu Item ---\n");
     printf("Your current items:\n");
 
@@ -148,12 +138,10 @@ void updateMenuItem(Restaurant *r) {
         return;
     }
 
-    // Step 2: Ask which item to update
     char targetId[20];
     printf("Enter Item ID to update: ");
     scanf("%19s", targetId);
 
-    // Step 3: Rewrite file with updates
     fp = fopen(MENU_FILE, "r");
     FILE *temp = fopen("data/menu_temp.txt", "w");
     if (!fp || !temp) {
@@ -181,7 +169,6 @@ void updateMenuItem(Restaurant *r) {
                     itemId, restaurantId, newName, newPrice, newStock);
             printf("✅ Item updated!\n");
         } else {
-            // Write unchanged item
             fprintf(temp, "%s,%s,%s,%.2f,%d\n",
                     itemId, restaurantId, itemName, price, stock);
         }
@@ -205,7 +192,6 @@ void deleteMenuItem(Restaurant *r) {
     double price;
     int stock;
 
-    // Step 1: Show current items
     printf("\n--- Delete Menu Item ---\n");
     printf("Your current items:\n");
 
@@ -225,12 +211,10 @@ void deleteMenuItem(Restaurant *r) {
         return;
     }
 
-    // Step 2: Ask which item to delete
     char targetId[20];
     printf("Enter Item ID to delete: ");
     scanf("%19s", targetId);
 
-    // Step 3: Rewrite file without the target item
     fp = fopen(MENU_FILE, "r");
     FILE *temp = fopen("data/menu_temp.txt", "w");
     if (!fp || !temp) {
@@ -244,7 +228,6 @@ void deleteMenuItem(Restaurant *r) {
         if (strcmp(restaurantId, r->id) == 0 && strcmp(itemId, targetId) == 0) {
             printf("✅ Deleted item: %s (%s)\n", itemName, itemId);
             deleted = 1;
-            // Skip writing this line → effectively deletes it
         } else {
             fprintf(temp, "%s,%s,%s,%.2f,%d\n",
                     itemId, restaurantId, itemName, price, stock);
@@ -300,7 +283,6 @@ void viewOrders(Restaurant *r) {
         return;
     }
 
-    // Always prompt to process order
     char targetOrder[20];
     printf("\nEnter Order ID to process (or 0 to cancel): ");
     scanf("%19s", targetOrder);
@@ -349,9 +331,9 @@ void processOrder(Restaurant *r, const char *targetOrder) {
                 default: strcpy(newStatus, "Pending");
             }
 
-            // --- Assign Delivery Driver (only if ReadyForDelivery) ---
+            // --- Assign Delivery Driver ---
             char newDriverId[20];
-            strcpy(newDriverId, deliveryId); // keep old one by default
+            strcpy(newDriverId, deliveryId);
 
             if (strcmp(newStatus, "ReadyForDelivery") == 0) {
                 printf("\n--- Available Delivery Drivers ---\n");
@@ -386,7 +368,6 @@ void processOrder(Restaurant *r, const char *targetOrder) {
                 }
             }
 
-            // --- Write updated order ---
             fprintf(temp, "%s,%s,%s,%s,%d,%.2f,%s,%s\n",
                     orderId, studentId, restaurantId, itemId,
                     quantity, price, newStatus, newDriverId);
@@ -399,7 +380,6 @@ void processOrder(Restaurant *r, const char *targetOrder) {
             printf("!\n");
 
         } else {
-            // keep unchanged
             fprintf(temp, "%s,%s,%s,%s,%d,%.2f,%s,%s\n",
                     orderId, studentId, restaurantId, itemId,
                     quantity, price, status, deliveryId);
@@ -417,6 +397,7 @@ void processOrder(Restaurant *r, const char *targetOrder) {
     }
 }
 
+// Generate report
 void generateSalesReport(Restaurant *r) {
     FILE *fp = fopen("data/orders.txt", "r");
     if (!fp) {

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
-#include "order.h"   // ✅ include order functions
+#include "order.h"  
 #include "utils.h"
 
 // Forward declarations of helpers
@@ -37,9 +37,7 @@ void studentMenu(Student *loggedInStudent) {
     }
 }
 
-// ==========================================================
 // View Profile
-// ==========================================================
 void viewProfile(Student *s) {
     printf("\n--- Student Profile ---\n");
     printf("ID: %s\n", s->id);
@@ -49,9 +47,7 @@ void viewProfile(Student *s) {
     printf("Balance: %.2f\n", s->balance);
 }
 
-// ==========================================================
-// Update Profile (with save to file)
-// ==========================================================
+// Update Profile 
 void updateProfile(Student *s) {
     int choice;
     char newValue[100];
@@ -96,10 +92,8 @@ void updateProfile(Student *s) {
     printf("✅ Profile updated successfully!\n");
 }
 
-// ==========================================================
 // Save Student Update to students.txt
 // (rewrite entire file, replacing this student's record)
-// ==========================================================
 static void saveStudentUpdate(Student *s) {
     FILE *fp = fopen("data/student.txt", "r");
     FILE *temp = fopen("data/student_temp.txt", "w");
@@ -134,9 +128,7 @@ static void saveStudentUpdate(Student *s) {
     rename("data/student_temp.txt", "data/student.txt");
 }
 
-// ==========================================================
-// Place Order (integrated with order.c)
-// ==========================================================
+// Place Order 
 void placeOrder(Student *s) {
     printf("\n--- Place Order ---\n");
     printf("Welcome %s!\n", s->firstName);
@@ -148,7 +140,7 @@ void placeOrder(Student *s) {
     }
 
     char id[20], name[100], username[50], email[100], password[50];
-    char restaurantIds[100][20];  // store up to 100 IDs
+    char restaurantIds[100][20];  
     int count = 0;
 
     printf("\n--- Available Restaurants ---\n");
@@ -183,12 +175,9 @@ void placeOrder(Student *s) {
 }
 
 
-
-// ==========================================================
-// View Order History (integrated with order.c)
-// ==========================================================
+// View Order History 
 void viewOrderHistory(Student *s) {
-    viewStudentOrderHistory(s->id);  // call order.c function
+    viewStudentOrderHistory(s->id);  
 }
 
 void topUpBalance(Student *s) {
@@ -223,6 +212,6 @@ void topUpBalance(Student *s) {
     }
 
     s->balance += amount;
-    saveStudentUpdate(s);  // ✅ reuse existing function to persist balance
+    saveStudentUpdate(s);  
     printf("✅ Top-up successful! New Balance: $%.2f\n", s->balance);
 }

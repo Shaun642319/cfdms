@@ -10,9 +10,7 @@
 #include "delivery.h"
 #include "admin.h"
 
-// ==========================================================
-// Read CSV File into dynamic 3D char array
-// ==========================================================
+// Read file
 char ***readFile(const char *filename, int *lineCount, int **valueCounts)
 {
     FILE *p = fopen(filename, "r");
@@ -23,7 +21,7 @@ char ***readFile(const char *filename, int *lineCount, int **valueCounts)
     }
 
     char buffer[256];
-    char ***data = NULL; // list of lines
+    char ***data = NULL; 
     *lineCount = 0;
     *valueCounts = NULL;
 
@@ -58,9 +56,7 @@ char ***readFile(const char *filename, int *lineCount, int **valueCounts)
     return data;
 }
 
-// ==========================================================
 // Free data allocated by readFile
-// ==========================================================
 void freeFileData(char ***data, int lineCount, int *valueCounts)
 {
     if (!data || !valueCounts)
@@ -77,9 +73,7 @@ void freeFileData(char ***data, int lineCount, int *valueCounts)
     free(valueCounts);
 }
 
-// ==========================================================
 // Universal Login
-// ==========================================================
 int login(const char *userType)
 {
     int lineCount;
@@ -220,9 +214,7 @@ int login(const char *userType)
     return 0;
 }
 
-// ==========================================================
 // Sign Up
-// ==========================================================
 void signUp(const char *userType)
 {
     char id[20], firstName[50], lastName[50], username[50], email[100], password[50];
@@ -230,7 +222,6 @@ void signUp(const char *userType)
     char fileName[50];
     char prefix;
 
-    // Decide file and prefix
     if (strcmp(userType, "Student") == 0)
     {
         strcpy(fileName, "data/student.txt");
@@ -367,7 +358,7 @@ void signUp(const char *userType)
         fclose(fd);
     }
 
-    // Always add credentials to users.txt
+    // add credentials to users.txt
     FILE *fu = fopen("data/users.txt", "a");
     fprintf(fu, "%s,%s,%s\n", username, password, userType);
     fclose(fu);
@@ -375,9 +366,7 @@ void signUp(const char *userType)
     printf("🎉 %s account created successfully! You may now log in.\n", userType);
 }
 
-// ==========================================================
 // Helpers
-// ==========================================================
 int userExists(const char *username, const char *email, const char *userType)
 {
     FILE *fu = fopen("data/users.txt", "r");
@@ -491,9 +480,7 @@ int validateEmail(const char *email)
     return 1;
 }
 
-// ==========================================================
 // Update users.txt password when profile changes
-// ==========================================================
 void updateUserCredentials(const char *username, const char *newPassword, const char *userType) {
     FILE *fp = fopen("data/users.txt", "r");
     FILE *temp = fopen("data/users_temp.txt", "w");

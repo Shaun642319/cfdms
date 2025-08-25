@@ -9,9 +9,7 @@
 
 static void saveStudentBalance(Student *s);
 
-// ==========================================================
-// Place Order (Student side with balance check)
-// ==========================================================
+// Place Order 
 void placeOrderFromStudent(Student *s, const char *restaurantId) {
     FILE *menuFp = fopen(MENU_FILE, "r");
     if (!menuFp) {
@@ -104,9 +102,7 @@ void placeOrderFromStudent(Student *s, const char *restaurantId) {
     printf("💰 New Balance: $%.2f\n", s->balance);
 }
 
-// ==========================================================
 // Save Student Balance after order
-// ==========================================================
 static void saveStudentBalance(Student *s) {
     FILE *fp = fopen(STUDENT_FILE, "r");
     FILE *temp = fopen("data/student_temp.txt", "w");
@@ -141,9 +137,7 @@ static void saveStudentBalance(Student *s) {
     rename("data/student_temp.txt", STUDENT_FILE);
 }
 
-// ==========================================================
 // View Student Order History
-// ==========================================================
 void viewStudentOrderHistory(const char *studentId) {
     FILE *fp = fopen(ORDER_FILE, "r");
     if (!fp) {

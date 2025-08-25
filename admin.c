@@ -8,9 +8,7 @@
 #define DELIVERY_FILE "data/delivery.txt"
 #define ORDER_FILE "data/orders.txt"
 
-// ==========================================================
-// Admin Main Menu
-// ==========================================================
+// Admin menu 
 void adminMenu(Admin *a) {
     int choice;
 
@@ -40,10 +38,7 @@ void adminMenu(Admin *a) {
     }
 }
 
-
-// ==========================================================
-// View Students
-// ==========================================================
+// View all students
 void viewAllStudents() {
     FILE *fp = fopen(STUDENT_FILE, "r");
     if (!fp) {
@@ -63,9 +58,7 @@ void viewAllStudents() {
     fclose(fp);
 }
 
-// ==========================================================
-// View Restaurants
-// ==========================================================
+// View all restaurants
 void viewAllRestaurants() {
     FILE *fp = fopen(RESTAURANT_FILE, "r");
     if (!fp) {
@@ -84,9 +77,7 @@ void viewAllRestaurants() {
     fclose(fp);
 }
 
-// ==========================================================
 // View Deliveries
-// ==========================================================
 void viewAllDeliveries() {
     FILE *fp = fopen(DELIVERY_FILE, "r");
     if (!fp) {
@@ -105,9 +96,7 @@ void viewAllDeliveries() {
     fclose(fp);
 }
 
-// ==========================================================
-// System Sales Report (sum across all restaurants)
-// ==========================================================
+// System Sales Report 
 void systemSalesReport() {
     FILE *fp = fopen("data/orders.txt", "r");
     if (!fp) {
@@ -146,9 +135,7 @@ void systemSalesReport() {
     fclose(fp);
 }
 
-// ==========================================================
 // Delivery Performance Report
-// ==========================================================
 void systemDeliveryReport() {
     FILE *fp = fopen("data/orders.txt", "r");
     if (!fp) {
