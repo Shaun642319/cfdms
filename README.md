@@ -51,28 +51,47 @@ All data is stored in **CSV-like `.txt` files** under the `data/` directory.
 
 ## ▶️ Build & Run
 
-### Build the full project:
+### 🔹 Using the Makefile (preferred)
+
+Build the full project:
 
 ```bash
 make all
 ```
 
-### Run the project:
+Run the project:
 
 ```bash
 make run
 ```
 
-### Clean object files & executable:
+Clean object files & executable:
 
 ```bash
 make clean
 ```
 
-### Build & run a single file (for testing):
+Build & run a single file (for testing):
 
 ```bash
 make student
+```
+
+---
+
+### 🔹 Without Makefile (manual compile)
+
+If `make` is not available on your system, you can directly compile and run with `gcc`:
+
+```bash
+gcc -Wall -g main.c student.c restaurant.c delivery.c admin.c order.c utils.c -o cfds
+```
+
+Run the program:
+
+```bash
+./cfds       # On Linux / Git Bash
+.\cfds.exe   # On Windows PowerShell / CMD
 ```
 
 ---
@@ -138,4 +157,5 @@ From here, select your role and interact with the system.
 
 ---
 
-✨ That’s it! Now you can build, run, and test the **Campus Food Delivery Management System** easily.
+✨ That’s it! Now you can build, run, and test the **Campus Food Delivery Management System** easily — either with the `make` commands or the direct `gcc` command if `make` isn’t available.
+
